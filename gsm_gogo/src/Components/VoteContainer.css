@@ -1,0 +1,10 @@
+.VoteContainer {
+  border: 3px solid;
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px;
+}

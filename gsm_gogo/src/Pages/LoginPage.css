@@ -1,0 +1,24 @@
+.LoginBox {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.SignupLink {
+    padding: 0px 5px;
+    font-weight: 550;
+    text-decoration: none;
+    color: var(--NEUTRAL_N10);
+}
+
+.SignupText {
+    font-size: 14px;
+}

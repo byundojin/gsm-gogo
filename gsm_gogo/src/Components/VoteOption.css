@@ -1,0 +1,23 @@
+.VoteButton {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid;
+  border-radius: 15px;
+  padding: 13px 15px 10px;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  transition: scale 0.5s;
+}
+
+.VoteButton:hover {
+  scale: 1.1;
+  transition: scale 0.5s;
+}
+
+.activeButton {
+  background-color: rgba(31, 60, 136, 0.2);
+}

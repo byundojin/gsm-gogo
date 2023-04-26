@@ -1,0 +1,13 @@
+.VotePage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.VoteForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

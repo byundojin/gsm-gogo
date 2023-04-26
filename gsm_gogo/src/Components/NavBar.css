@@ -1,0 +1,19 @@
+.NavBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 55px;
+
+  display: flex;
+  justify-content: space-between;
+  border-top: 3px solid #434343;
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+.Nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
