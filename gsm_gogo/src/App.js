@@ -30,7 +30,7 @@ function App() {
           </Route>
 
           <Route path="/info">
-            <Route paht="food" element={<FoodPage />} /> {/*급식 페이지*/}
+            <Route path="food" element={<FoodPage />} /> {/*급식 페이지*/}
             <Route path="schedule" element={<SchedulePage />} />{" "}
             {/*일정 페이지*/}
             <Route path="event" element={<EventPage />} /> {/*이벤트 페이지*/}
