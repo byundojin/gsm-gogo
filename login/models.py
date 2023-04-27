@@ -10,3 +10,5 @@ class GoUser(AbstractBaseUser):
 
     def __str__(self) -> str:
         return self.id
+    
+
