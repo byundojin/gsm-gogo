@@ -42,11 +42,17 @@ function SignupPage() {
     // console.log("send | id :",{id},"| pw :",{password},"| student :",{student})
       .then(function (response) {
         console.log(response);
+        <Link to="/"></Link>
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch((error) => {
+        if (error.response.status === 400) {
+          alert("잘못된 데이터 전송");
+          console.log(response);
+        } else if (error.response.status === 400) {
+          alert("잘못된 데이터 전송");
+          console.log(response);
+        }
       });
-    <Link to="/"></Link>
   }
 
   return (
