@@ -78,7 +78,7 @@ function SignupPage() {
           else if (response.data.status == 1) {
             alert(`정상적으로 회원가입이 되었습니다. ${id} ${pw} ${student}`);
             console.log(response);
-            navigate("/");
+            window.location.href = "/"
           }
         })
         .catch((error) => {

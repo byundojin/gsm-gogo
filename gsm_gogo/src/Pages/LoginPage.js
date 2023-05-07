@@ -44,10 +44,11 @@ function LoginPage() {
       .then(function (response) {
         console.log(response)
         if (response.data.status == 1) {
-          alert(`정상적으로 로그인 되었습니다.`);
           console.log("1");
-          navigate("main/");
+          alert(`정상적으로 로그인 되었습니다.`);
           console.log("2");
+          window.location.href = "main/"
+          localStorage.setItem('user-email', id+"@gsm.hs.kr");
         }
         else if (response.data.status == 3) {
           alert(`비밀번호가 다름니다.`);
