@@ -84,7 +84,6 @@ function MainPage({ POINT, setPOINT, USERNAME, breakfast, lunch }) {
     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░
     `);
 
-
   }, []);
 
   async function userInformation(){
