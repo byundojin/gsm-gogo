@@ -1,26 +1,40 @@
 import "./MainInfo.css";
 
-import Food from "./../img/food_img.png";
-import Event from "./../img/event_img.png";
 import Calendar from "./../img/calendar_img.png";
-import { Link } from "react-router-dom";
+import Event from "./../img/event_img.png";
+import Food from "./../img/food_img.png";
 
-function MainInfo() {
+function MainInfo({ setFoodModal, setScheduleModal, setEventModal }) {
   return (
     <>
       <div className="MainInfoContainer">
         <p className="InfoTitleText">이런 정보는 어때요?</p>
         <p>더욱 즐겁게 즐길 수 있도록 GSM GOGO가 도울게요!</p>
         <div className="InfoButtonContainer">
-          <Link to="/info/food" style={{ textDecoration: "none" }}>
-            <div className="InfoButton">급식</div>
-          </Link>
-          <Link to="/info/schedule" style={{ textDecoration: "none" }}>
-            <div className="InfoButton">일정</div>
-          </Link>
-          <Link to="/info/event" style={{ textDecoration: "none" }}>
-            <div className="InfoButton">이벤트</div>
-          </Link>
+          <div
+            className="InfoButton"
+            onClick={() => {
+              setFoodModal(true);
+            }}
+          >
+            <img src={Food} />
+          </div>
+          <div
+            className="InfoButton"
+            onClick={() => {
+              setScheduleModal(true);
+            }}
+          >
+            <img src={Calendar} />
+          </div>
+          <div
+            className="InfoButton"
+            onClick={() => {
+              setEventModal(true);
+            }}
+          >
+            <img src={Event} />
+          </div>
         </div>
       </div>
     </>

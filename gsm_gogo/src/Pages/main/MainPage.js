@@ -9,10 +9,20 @@ import { useEffect, useState } from "react";
 import MainSwipe from "../../Components/MainSwipe";
 import MainContainer from "../../Components/MainContainer";
 import NavBar from "../../Components/NavBar";
+import { Mobile, PC } from "../../Components/reactResponsive";
+import SideBar from "../../Components/SideBar";
+import PcMainSwipe from "../../Components/PcMainSwipe";
+import MainPcContainer from "../../Components/MainPcContainer";
+import PCMainFood from "../../Components/PCMainFood";
+import PCMainSchedule from "../../Components/PCMainSchedule";
+import PCMainEvent from "../../Components/PCMainEvent";
+import { useNavigate } from "react-router-dom";
 
-function MainPage() {
-  const [mainPoint, setMainPoint] = useState(1000); /* 포인트 */
-  const [userName] = useState("1116방시현");
+function MainPage({ POINT, setPOINT, USERNAME, breakfast, lunch }) {
+  const [mainPoint, setMainPoint] = useState(POINT); /* 포인트 */
+  const [userName] = useState(USERNAME);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(`
@@ -75,25 +85,154 @@ function MainPage() {
     `);
   }, []);
 
+  const [foodModal, setFoodModal] = useState(false);
+  const [scheduleModal, setScheduleModal] = useState(false);
+  const [eventModal, setEventModal] = useState(false);
+
   return (
     <>
       <div>
-        <MainContainer>
-          <MainHeader userName={userName} />
-          {/* 메인화면 위 타이틀 */}
+        <PC>
+          <SideBar currentPage={0} Point={mainPoint} userName={userName} />
+          <MainPcContainer>
+            <PcMainSwipe />
 
-          <MainPoint Point={mainPoint} />
-          {/* 메인화면에서 보여주는 포인트 */}
+            <div className="PCMainInfoContainer">
+              <PCMainFood breakfast={breakfast} lunch={lunch} />
+              <PCMainSchedule />
+              <PCMainEvent />
+            </div>
+          </MainPcContainer>
+        </PC>
 
-          <MainSwipe />
-          {/* 스와이프 컴포넌트 */}
+        <Mobile>
+          <MainContainer>
+            {foodModal ? (
+              <div
+                className="FoodModalContainer"
+                onClick={() => {
+                  setFoodModal(false);
+                }}
+              >
+                <ol style={{ listStyle: "none" }} className="FoodListTextBox">
+                  {breakfast && <p className="PCFoodTitle">조식</p>}
+                  {breakfast &&
+                    breakfast.map(function (a, i) {
+                      return <li key={i}>{a}</li>;
+                    })}
+                </ol>
+                <hr />
+                <ol style={{ listStyle: "none" }} className="FoodListTextBox">
+                  {lunch && <p className="PCFoodTitle">점심</p>}
+                  {lunch &&
+                    lunch.map(function (a, i) {
+                      return <li key={i}>{a}</li>;
+                    })}
+                </ol>
+              </div>
+            ) : null}
+            {scheduleModal ? (
+              <div
+                className="ScheduleModalContainer"
+                onClick={() => {
+                  setScheduleModal(false);
+                }}
+              >
+                <p>개회식 및 준비체조</p>
+                <p>
+                  줄다리기 예선(4경기) <br />
+                  6인 7각 예선(2경기)
+                </p>
+                <p>
+                  줄다리기 결승
+                  <br />
+                  줄파도타기 예선
+                  <br />
+                  어이달리기 예선
+                  <br />
+                  사제동행 징검다리
+                </p>
+                <p>농구 자유투 릴레이 예선(4경기)</p>
+                <p>
+                  이벤트 축구 경기
+                  <br />
+                  배구 결승
+                </p>
+                <p>점심(공연) 및 경품 추첨, 보물찾기</p>
+                <p>
+                  줄파도타기 결승 <br />
+                  사제 간 축구
+                </p>
+                <p>
+                  6인 7각 결승 <br />
+                  농구 자유투 릴레이 <br />
+                  순위 결정전 및 결승
+                </p>
+                <p>
+                  축구 결승 <br />
+                  농구 결승
+                </p>
+                <p>
+                  미션 달리기
+                  <br />
+                  이어달리기 결승
+                </p>
+                <p>
+                  정리운동 및 시상식, 폐회식
+                  <br />
+                  교내 환경정화 및 종례
+                </p>
+              </div>
+            ) : null}
+            {eventModal ? (
+              <div
+                className="EventModalContainer"
+                onClick={() => {
+                  setEventModal(false);
+                }}
+              >
+                <p>6인 6각</p>
+                <p>줄파도타기</p>
+                <p>이어달리기</p>
+                <p>미션달리기</p>
+                <p>농구 자유투 릴레이</p>
+                <p>줄다리기</p>
+                <p>축구 농구 배구 </p>
+              </div>
+            ) : null}
+            <MainHeader userName={userName} />
+            {/* 메인화면 위 타이틀 */}
 
-          <MainInfo />
-          {/* 정보 버튼 */}
-        </MainContainer>
+            <MainPoint Point={mainPoint} />
+            {/* 메인화면에서 보여주는 포인트 */}
+
+            <MainSwipe />
+            {/* 스와이프 컴포넌트 */}
+
+            <MainInfo
+              setFoodModal={setFoodModal}
+              setScheduleModal={setScheduleModal}
+              setEventModal={setEventModal}
+            />
+            {/* 정보 버튼 */}
+            <div className="MobileCoinButtonContainer">
+              <p>최대 2배의 포인트를 획득할 기화!</p>
+              <div
+                className="MobileCoinButton"
+                onClick={() => {
+                  navigate("minigame");
+                }}
+              >
+                동전 굴리러 가기
+              </div>
+            </div>
+          </MainContainer>
+        </Mobile>
 
         {/* 메인화면 아래 네비게이션 바 */}
-        <NavBar />
+        <Mobile>
+          <NavBar />
+        </Mobile>
       </div>
     </>
   );

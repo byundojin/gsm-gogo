@@ -1,13 +1,118 @@
 .VotePage {
-  width: 100%;
+  margin-left: 330px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .VoteForm {
-  width: 100%;
+  display: grid;
+  width: 1200px;
+}
+
+.limitPointTitle {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.Limited {
+  color: red;
+}
+
+.VoteLimitPointTitle {
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.VotewithInputContainer {
+  display: flex;
+  align-items: center;
+}
+
+.VoteInfoContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-grow: 5;
+}
+
+.VotePointInput {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  margin: 10px;
+  font-size: 15px;
+}
+
+.VoteBettingButton {
+  border: 1px solid #1f3c88;
+  background-color: #1f3c88;
+  padding: 20px;
+  border-radius: 20px;
+  color: white;
+  font-size: 30px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  width: 10em;
+}
+
+.VoteBoxwithButtonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.VoteBettingButtonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+  z-index: 200;
+}
+
+.VoteResultImgContainer {
+  position: absolute;
+  left: 38%;
+}
+.VoteResultImg {
+  width: 500px;
+}
+
+.MobileVoteResultImgContainer {
+  position: absolute;
+  left: 20%;
+}
+
+.MobileVoteResultImg {
+  width: 250px;
+}
+
+/*                      */
+
+.MobileVotePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+}
+
+.MobileVoteForm {
+  display: grid;
+  width: 100%;
+}
+
+/*X*/
+/*
+.MobileVotewithInputContainer {
+}
+*/
+
+.MobileVoteBoxwithButtonContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
 }

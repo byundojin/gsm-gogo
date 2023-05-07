@@ -12,7 +12,7 @@ function MainHeader({ userName }) {
           <img id="MainCoinImg" src={coin_img} />
         </div>
         <div>
-          <div>
+          <div id="MainLogoImg">
             <img src={logo_img} />
           </div>
 

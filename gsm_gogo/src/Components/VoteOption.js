@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 
 import "./VoteOption.css";
 
+import Flag_Img from "../img/Flag_Img.png";
+import { Mobile, PC } from "./reactResponsive";
+
 function VoteOption({
+  setSelect,
   KeyNumber,
   teamName,
-  select,
-  setSelect,
   selectedState,
   setSelectedState,
   isVoted,
@@ -36,27 +38,34 @@ function VoteOption({
   }, [selectedState]);
 
   return (
-    <div>
-      <div
-        className={`Box VoteButton ${active} ${
-          vottedTeam == true ? "activeButton" : ""
-        }`}
-        /* isVoted가 false 일 때만 클릭 가능 */
-        onClick={() => {
-          /* isVoted가 false 일 때만 클릭 가능 */
-          if (isVoted === false) {
-            if (!selected) {
-              setSelectedState(Key);
-            } else {
-              setSelectedState(null);
-              setSelect(null);
-            }
-          }
-        }}
-      >
-        {teamName}
-      </div>
-    </div>
+    <>
+      <PC>
+        <div>
+          <div
+            className={`Box VoteButton ${active} ${
+              vottedTeam == true ? "activeButton" : ""
+            }`}
+            /* isVoted가 false 일 때만 클릭 가능 */
+            onClick={() => {
+              /* isVoted가 false 일 때만 클릭 가능 */
+              if (isVoted === false) {
+                if (!selected) {
+                  setSelectedState(Key);
+                } else {
+                  setSelectedState(null);
+                  setSelect(null);
+                }
+              }
+            }}
+          >
+            {selected == false ? null : (
+              <img src={Flag_Img} className="VotedFlag" />
+            )}
+            <div className="VoteTeamNameTitle">{teamName}</div>
+          </div>
+        </div>
+      </PC>
+    </>
   );
 }
 

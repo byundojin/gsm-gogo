@@ -1,0 +1,7 @@
+db.sqlite3
+gogo/__pycache__/
+gogo_login/__pycache__/
+gogo_login/migrations/
+gsm_gogo/
+gogo_login/
+ubuntu-2004.appx

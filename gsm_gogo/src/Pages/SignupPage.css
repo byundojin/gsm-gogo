@@ -1,24 +1,91 @@
 .SignupBox {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .SignupForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 70%;
+
+  gap: 2px;
 }
 
 .SignupLink {
-    padding: 0px 5px;
-    font-weight: 550;
-    text-decoration: none;
-    color: var(--NEUTRAL_N10);
+  padding: 0px 5px;
+  font-weight: 550;
+  text-decoration: none;
+  color: var(--NEUTRAL_N10);
 }
 
 .SignupText {
-    font-size: 14px;
+  font-size: 14px;
+}
+
+.SignupBackground {
+  background-image: url("../img/PCSignup_Img.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.FormBox {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.SignupButton {
+  margin-top: 25px;
+}
+
+/****************************************************************/
+
+.SignupBox {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.SignupForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 70%;
+
+  gap: 2px;
+}
+
+.SignupLink {
+  padding: 0px 5px;
+  font-weight: 550;
+  text-decoration: none;
+  color: var(--NEUTRAL_N10);
+}
+
+.MobileSignupText {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.SignupBackground {
+  background-image: url("../img/PCSignup_Img.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.FormBox {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.SignupButton {
+  margin-top: 25px;
 }
