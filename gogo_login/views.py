@@ -10,7 +10,7 @@ from django.core.mail import EmailMessage
 from django.contrib.auth.hashers import make_password, check_password
 from random import randint
 import hashlib
-from .task import send_email_task
+from .task import send_mail
 
 class signup(APIView):
     def post(self, request):
@@ -48,7 +48,7 @@ class signup(APIView):
                 user = TokenUser(email=email,password=password,name=name,student_number=student_number,hash=hex_dig)
                 user.save()
                 link = f'http://127.0.0.1:8000/acounts/email_auth/{hex_dig}'
-                send_email_task(name, email, link)
+                send_mail(name, email, link)
                 
                 print("what")
                 return Response(CallStatusSerializer(call_status).data, status=status.HTTP_200_OK)
