@@ -10,6 +10,8 @@
   border-top: 3px solid #434343;
   background-color: #ffffff;
   padding: 10px;
+
+  z-index: 100;
 }
 
 .Nav {

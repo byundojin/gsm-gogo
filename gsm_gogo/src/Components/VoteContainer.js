@@ -1,12 +1,22 @@
 import "./VoteContainer.css";
+import { Mobile, PC } from "./reactResponsive";
 
 function VoteContainer({ children, event }) {
   return (
     <>
-      <div className="VoteContainer">
-        <p>{event}</p>
-        {children}
-      </div>
+      <PC>
+        <div className="VoteContainer">
+          <p id="VoteEventTitle">{event}</p>
+          <div className="VoteBoxsContainer">{children}</div>
+        </div>
+      </PC>
+
+      <Mobile>
+        <div className="MobileVoteContainer">
+          <p id="MobileVoteEventTitle">{event}</p>
+          <div className="VoteBoxsContainer">{children}</div>
+        </div>
+      </Mobile>
     </>
   );
 }

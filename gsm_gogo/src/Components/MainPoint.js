@@ -4,8 +4,8 @@ function MainPoint({ Point }) {
   return (
     <>
       <div className="MainPointContiner">
-        <p>닉네임님의 총 포인트</p>
-        <div>{Point}P</div>
+        <p className="MainMobilePointTitle">닉네임님의 총 포인트</p>
+        <div className="MainMobilePoint">{Point}P</div>
       </div>
     </>
   );

@@ -1,0 +1,190 @@
+.MiniGameContainer {
+  margin-top: -20px;
+  margin-left: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.MinigameCoinImg {
+  width: 65%;
+  position: absolute;
+
+  border-radius: 20px;
+  top: 120px;
+  padding: 20px;
+  margin: 30px;
+  background: rgba(247, 182, 51, 0.1);
+}
+
+.MinigameCoinBackGround {
+  width: 650px;
+  position: relative;
+}
+
+.MinigameCoinContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+}
+
+.MinigameCoinBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.MinigameInputContainer {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px;
+  z-index: 100;
+}
+
+.MinigameButtonContainer {
+  width: 100%;
+}
+
+.MinigameButton {
+  font-size: 20px;
+  padding: 10px;
+  font-weight: 700;
+  border: 1px solid;
+}
+
+.MinigamePointInput {
+  width: 300px;
+  text-align: center;
+  padding: 15px;
+}
+
+.MinigameOportunityTitle {
+  border: 1px solid;
+  border-radius: 15px;
+  padding: 10px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.MinigameResultTitle {
+  position: absolute;
+  color: #ffffff;
+
+  background-color: rgba(4, 4, 4, 0.4);
+
+  top: 80px;
+  width: 40%;
+  font-size: 60px;
+  font-weight: 700;
+  padding: 10px;
+  padding-bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.MinigameBettingButton {
+  font-size: 30px;
+  font-weight: 700;
+  border: 1px solid;
+  border-radius: 15px;
+  padding: 10px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  background: #1f3c88;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.MinigameOkButton {
+  font-size: 30px;
+  font-weight: 700;
+  border: 1px solid;
+  border-radius: 15px;
+  padding: 5px;
+  width: 120px;
+  display: flex;
+  margin-top: -18px;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  background: #d54747;
+  cursor: pointer;
+}
+/*ANI*/
+.start {
+  opacity: 0;
+}
+.end {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+/********************************************/
+
+.MobileMiniGameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.MobileMinigameCoinBackGround {
+  width: 70%;
+  position: relative;
+}
+
+.MobileMinigameInputContainer {
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px;
+  z-index: 100;
+}
+
+.MobileMinigameCoinImg {
+  width: 75%;
+  position: absolute;
+
+  border-radius: 20px;
+  top: 20px;
+  padding: 20px;
+  margin: 30px;
+  background: rgba(247, 182, 51, 0.1);
+}
+
+.MobileMinigameResultTitle {
+  position: absolute;
+  color: #ffffff;
+
+  background-color: rgba(4, 4, 4, 0.4);
+
+  top: 50px;
+  width: 50%;
+  font-size: 60px;
+  font-weight: 700;
+  padding: 10px;
+  padding-bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
