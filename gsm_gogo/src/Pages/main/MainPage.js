@@ -83,7 +83,32 @@ function MainPage({ POINT, setPOINT, USERNAME, breakfast, lunch }) {
     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░─░░░
     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░
     `);
+
   }, []);
+
+  async function userInformation(){
+    await axios.post("http://127.0.0.1:8000/acounts/signup/", {
+      id: id,
+      password: password,
+      student : student,
+    })
+    .then(function (response) {
+      console.log(response)
+      if (response.data.status == 2) {
+        alert("이미 등록된 email");
+        console.log(response);
+      }
+      else if (response.data.status == 1) {
+        alert(`정상적으로 회원가입이 되었습니다. ${id} ${pw} ${student}`);
+        console.log(response);
+        window.location.href = "/"
+      }
+    })
+    .catch((error) => {
+      alert("잘못된 데이터 전송");
+      console.log(error);
+    });
+  }
 
   const [foodModal, setFoodModal] = useState(false);
   const [scheduleModal, setScheduleModal] = useState(false);
