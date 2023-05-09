@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "gogo_login",
-
+    
 
     "rest_framework",
     'corsheaders', # CORS 관련 추가
@@ -68,6 +68,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware', ## 이거 추가!!
 ]
 
 ROOT_URLCONF = "gogo.urls"
@@ -155,3 +156,14 @@ EMAIL_HOST_USER = 'gsmgogoisgogo@gmail.com'
 EMAIL_HOST_PASSWORD = 'wyqm ujyj tirq lezo'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+DEBUG = False
+
+ALLOWED_HOSTS = ['*']
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+import os 
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
