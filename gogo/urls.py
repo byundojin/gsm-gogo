@@ -19,5 +19,6 @@ from django.urls import path,include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("acounts/", include("gogo_login.urls"))
+    path("acounts/", include("gogo_login.urls")),
+    path("main/", include("gogo_login.main_urls")),
 ]

@@ -54,7 +54,9 @@ INSTALLED_APPS = [
     "rest_framework",
     'corsheaders', # CORS 관련 추가
 
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
