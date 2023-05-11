@@ -78,7 +78,19 @@ class bet_page(APIView):
                     print("email duplication")
                     print("HTTP_202_ACCEPTED")
                     return Response(status=status.HTTP_202_ACCEPTED)
-                user_info = f",{serializer.data['id']}/{'{:0>4}'.format(serializer.data['bet_point'])}/{serializer.data['bet_team']}"
+                if user.point >= int(serializer.data['bet_point']):
+                    user.point -= int(serializer.data['bet_point'])
+                    print('after user')
+                    print("----------------------")
+                    print(user)
+                    print('point :', user.point)
+                    print("----------------------")
+                    user.save()
+                else:
+                    print("not enough point")
+                    print("HTTP_202_ACCEPTED")
+                    return Response(status=status.HTTP_202_ACCEPTED)
+                user_info = f",{serializer.data['id']}/{serializer.data['bet_point']}/{serializer.data['bet_team']}"
                 game.user_info += user_info
                 game.save()
                 return Response(status=status.HTTP_200_OK)
