@@ -3,8 +3,11 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.postgres.fields import ArrayField
 
+class GetUserId(models.Model):
+    id = models.CharField(_("id"), max_length=6, primary_key=True)
 
-
+class GetGameIds(models.Model):
+    ids = models.TextField(_("ids"))
 
 class GetUser(models.Model):
     id = models.CharField(_("id"), max_length=6, primary_key=True)
@@ -49,9 +52,9 @@ class Game(models.Model):
     id = models.IntegerField(_("id"), primary_key=True)
     win_team = models.IntegerField(_("win_team"), null=True)
     is_active = models.BooleanField(_("is_active"), default=True)
-    user_info = models.TextField(_("user_info"), default='')
-    bet_rate = models.TextField(_("bet_rate"),default='')
-    user_rate = models.TextField(_("user_rate"),default='')
+    user_info = models.TextField(_("user_info"), null=True)
+    bet_rate = models.TextField(_("bet_rate"),null=True)
+    user_rate = models.TextField(_("user_rate"),null=True)
 
     def define_user(self):
         user_info = self.user_info
@@ -117,3 +120,7 @@ class Game(models.Model):
         for email, bet_point, bet_team in self.define_user():
             result += email
         return result
+    
+    def all_games():
+        games = Game.objects.all()
+        

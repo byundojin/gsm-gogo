@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import GetUser, CallStatus, User, Minigame, GameUser
+from .models import *
 
 class GetUserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,3 +30,19 @@ class GameUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = GameUser
         fields = '__all__'
+
+class GetUserIdSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GetUserId
+        fields = '__all__'
+
+class GetGamesIdsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GetGameIds
+        fields = '__all__'
+
+class GameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Game
+        fields = '__all__'
+

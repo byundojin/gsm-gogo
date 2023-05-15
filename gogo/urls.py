@@ -22,5 +22,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("acounts/", include("gogo_login.urls")),
     path("main/", include("gogo_login.main_urls")),
-    path("game_set/", include("gogo_login.game_set_urls"))
+    path("game/", include("gogo_login.game_urls")),
+    path("get/", include("gogo_login.get_urls")),
 ]
