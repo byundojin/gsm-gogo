@@ -52,7 +52,7 @@ class Game(models.Model):
     id = models.IntegerField(_("id"), primary_key=True)
     win_team = models.IntegerField(_("win_team"), null=True)
     is_active = models.BooleanField(_("is_active"), default=True)
-    user_info = models.TextField(_("user_info"), null=True)
+    user_info = models.TextField(_("user_info"), default='')
     bet_rate = models.TextField(_("bet_rate"),null=True)
     user_rate = models.TextField(_("user_rate"),null=True)
 
