@@ -1,5 +1,3 @@
 db.sqlite3
 gogo/__pycache__/
-gogo_login/__pycache__/
-gogo_login/migrations/
 ubuntu-2004.appx
