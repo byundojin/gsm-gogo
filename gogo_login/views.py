@@ -11,6 +11,7 @@ from django.contrib.auth.hashers import make_password, check_password
 from random import randint
 import hashlib
 from .task import send_mail
+from django.shortcuts import redirect
 
 class signup(APIView):
     def post(self, request):
@@ -111,7 +112,7 @@ def email_auth(request, hash):
             print("----------------------")
             user.save()
             token_user.delete()
-            return HttpResponse() # 이거 로그인으로 보내야함
+            return redirect("https://gsmgogo.nperm.net/") # 이거 로그인으로 보내야함
     except:
         print("HTTP_400_BAD_REQUEST")
         return HttpResponse("실패")
