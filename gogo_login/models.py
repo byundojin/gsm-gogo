@@ -21,17 +21,33 @@ class HashUser(models.Model):
     student_number = models.IntegerField(_("student_number"))
     name = models.CharField(_("name"), max_length=4)
 
+class Games(models.Model):
+    id = models.CharField(_("id"), max_length=6, primary_key=True)
+    select_1 = models.IntegerField(null=True)
+    select_2 = models.IntegerField(null=True)
+    select_3 = models.IntegerField(null=True)
+    point_1 = models.IntegerField(null=True)
+    point_2 = models.IntegerField(null=True)
+    point_3 = models.IntegerField(null=True)
 
 class User(AbstractBaseUser):
     email = models.CharField(_("email"), max_length=16, primary_key=True)
     password = models.CharField(_("password"), max_length=20)
     student_number = models.IntegerField(_("student_number"))
     name = models.CharField(_("name"), max_length=4)
-    point = models.IntegerField(_("point"), default=1500)
+    point = models.IntegerField(_("point"), default=30000)
     minigame_count = models.IntegerField(default=3)
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+
+    select_1 = models.IntegerField(null=True)
+    select_2 = models.IntegerField(null=True)
+    select_3 = models.IntegerField(null=True)
+    point_1 = models.IntegerField(null=True)
+    point_2 = models.IntegerField(null=True)
+    point_3 = models.IntegerField(null=True)
+    is_vote = models.BooleanField(default=True)
 
     USERNAME_FIELD = 'email'
 

@@ -31,10 +31,9 @@ class signup(APIView):
                 print("well")
                 print("----------------------")
                 student = serializer.data["student"]
-                student = student.split('/')
-                student_number = student[0]
+                student_number = student[0:4]
                 print('student_number :',student_number)
-                name = student[1]
+                name = student[4:]
                 print('name :',name)
                 email = serializer.data["id"] + "@gsm.hs.kr"
                 print('email :',email)
@@ -46,7 +45,7 @@ class signup(APIView):
                 print('hash :',hex_dig)
                 user = HashUser(email=email,password=password,name=name,student_number=student_number,hash=hex_dig)
                 user.save()
-                link = f'http://127.0.0.1:8000/acounts/email_auth/{hex_dig}'
+                link = f'https://port-0-gsm-gogo-xiy3e2blhgbvw2v.sel4.cloudtype.app/acounts/email_auth/{hex_dig}'
                 print('link :',link)
                 send_mail(name, email, link)
                 print('HTTP_200_OK')
@@ -112,7 +111,7 @@ def email_auth(request, hash):
             print("----------------------")
             user.save()
             token_user.delete()
-            return HttpResponse("성공")
+            return HttpResponse() # 이거 로그인으로 보내야함
     except:
         print("HTTP_400_BAD_REQUEST")
         return HttpResponse("실패")

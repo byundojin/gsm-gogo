@@ -46,3 +46,8 @@ class GameSerializer(serializers.ModelSerializer):
         model = Game
         fields = '__all__'
 
+class GamesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Games
+        fields = '__all__'
+

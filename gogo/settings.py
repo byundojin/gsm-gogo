@@ -168,4 +168,4 @@ import os
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-CSRF_TRUSTED_ORIGINS = ['https://*.cloudtype.app']
+CSRF_TRUSTED_ORIGINS = ['https://*.cloudtype.app','http://localhost:8000']

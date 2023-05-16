@@ -2,16 +2,9 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import GetUserSerializer, CallStatusSerializer, UserSerializer, MinigameSerializer, GameUserSerializer
+from .serializers import *
 from django.http import HttpResponse
-from .models import User, CallStatus, Game
-from rest_framework.authtoken.models import Token
-from django.core.mail import EmailMessage
-from django.contrib.auth.hashers import make_password, check_password
-from random import randint
-import hashlib
-from .task import send_mail
-
+from .models import *
 
 class minigame_page(APIView):
     def post(self, request):
@@ -52,10 +45,10 @@ class minigame_page(APIView):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class bet_page(APIView):
-    def post(self, request, game):
+    def post(self, request):
         print("//////////////////////")
-        print("game")
-        serializer = GameUserSerializer(data=request.data)
+        print("bet")
+        serializer = GamesSerializer(data=request.data)
         print('serializer')
         print("----------------------")
         print(serializer)
@@ -63,37 +56,47 @@ class bet_page(APIView):
         if serializer.is_valid():
             try:
                 user = User.objects.get(email=serializer.data["id"]+"@gsm.hs.kr")
-                print('user')
-                print("----------------------")
-                print(user)
-                print('point :', user.point)
-                print("----------------------")
-                print(serializer.data.keys())
-                game = Game.objects.get(id=game)
-                print('game')
-                print("----------------------")
-                print(game)
-                print("----------------------")
-                if serializer.data["id"] in game.email_list():
-                    print("email duplication")
-                    print("HTTP_202_ACCEPTED")
-                    return Response(status=status.HTTP_202_ACCEPTED)
-                if user.point >= int(serializer.data['bet_point']):
-                    user.point -= int(serializer.data['bet_point'])
-                    print('after user')
-                    print("----------------------")
-                    print(user)
-                    print('point :', user.point)
-                    print("----------------------")
-                    user.save()
+                if user.point >= serializer.data['point_1'] + serializer.data['point_2'] + serializer.data['point_3']:
+                    if user.is_vote:
+                        user.select_1 = serializer.data['select_1']
+                        user.select_2 = serializer.data['select_2']
+                        user.select_3 = serializer.data['select_3']
+                        user.point_1 = serializer.data['point_1']
+                        user.point_2 = serializer.data['point_2']
+                        user.point_3 = serializer.data['point_3']
+                        for i in range(1, 4):
+                            try:
+                                game = Game.objects.get(id=i)
+                                if game.is_active:
+                                    print(1)
+                                    user.point -= serializer.data[f'point_{i}']
+                                    print(2)
+                                    user_info = f",{serializer.data['id']}/{serializer.data[f'point_{i}']}/{serializer.data[f'select_{i}']}"
+                                    print(user_info)
+                                    game.user_info += user_info
+                                    game.save()
+                                    print("game save")
+                                else:
+                                    print("already end game :", i )
+                            except:
+                                print("not find game :", i )
+                        user.is_vote = False
+                        user.save()
+                        print('user save')
+                        return Response(status=status.HTTP_200_OK)
+                    else:
+                        print("already vote")
+                        return Response(status=status.HTTP_202_ACCEPTED)
                 else:
-                    print("not enough point")
-                    print("HTTP_202_ACCEPTED")
+                    print("not enought point")
                     return Response(status=status.HTTP_202_ACCEPTED)
-                user_info = f",{serializer.data['id']}/{serializer.data['bet_point']}/{serializer.data['bet_team']}"
-                game.user_info += user_info
-                game.save()
-                return Response(status=status.HTTP_200_OK)
             except:
+                print("user not find")
                 return Response(status=status.HTTP_404_NOT_FOUND)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        else:
+            print("bad request")
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+            
+
+
+
