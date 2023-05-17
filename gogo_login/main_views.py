@@ -75,6 +75,7 @@ class bet_page(APIView):
                                     print(user_info)
                                     game.user_info += user_info
                                     game.save()
+                                    game.calculate_dividend_rate()
                                     print("game save")
                                 else:
                                     print("already end game :", i )
