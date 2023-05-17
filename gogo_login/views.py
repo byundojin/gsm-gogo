@@ -86,7 +86,7 @@ class login(APIView):
             print("not found email")
             print("HTTP_404_NOT_FOUND")
             return Response(status=status.HTTP_404_NOT_FOUND)
-
+    
 
 def email_auth(request, hash):
     print("////////////////////////////////////")

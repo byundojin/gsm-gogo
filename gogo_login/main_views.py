@@ -68,9 +68,9 @@ class bet_page(APIView):
                             try:
                                 game = Game.objects.get(id=i)
                                 if game.is_active:
-                                    print(1)
+                                    print(user.point)
                                     user.point -= serializer.data[f'point_{i}']
-                                    print(2)
+                                    print(user.point)
                                     user_info = f",{serializer.data['id']}/{serializer.data[f'point_{i}']}/{serializer.data[f'select_{i}']}"
                                     print(user_info)
                                     game.user_info += user_info
