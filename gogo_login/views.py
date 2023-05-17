@@ -44,6 +44,11 @@ class signup(APIView):
                 hash_object = hashlib.sha256(email.encode())
                 hex_dig = hash_object.hexdigest()
                 print('hash :',hex_dig)
+                try:
+                    hashuser = HashUser.objects.get(email=email)
+                    hashuser.delete()
+                except:
+                    print()
                 user = HashUser(email=email,password=password,name=name,student_number=student_number,hash=hex_dig)
                 user.save()
                 link = f'https://port-0-gsm-gogo-xiy3e2blhgbvw2v.sel4.cloudtype.app/acounts/email_auth/{hex_dig}'
@@ -58,32 +63,30 @@ class login(APIView):
     def post(self, request):
         print("////////////////////////////////////")
         print("login")
-        serializer = GetUserSerializer(data=request.data)
+        serializer = request.data
         print('serializer')
         print("----------------------")
         print(serializer)
         print("----------------------")
-        if serializer.is_valid():
-            try:
-                user = User.objects.get(email=serializer.data["id"]+"@gsm.hs.kr")
-                print('user')
-                print("----------------------")
-                print(user)
-                print("----------------------")
-                if (user.password == serializer.data['password']):
-                    print("login success")
-                    print("HTTP_200_OK")
-                    return Response(UserSerializer(user).data,status=status.HTTP_200_OK)
-                else:
-                    print("password not same")
-                    print("HTTP_202_ACCEPTED")
-                    return Response(status=status.HTTP_202_ACCEPTED)
-            except:
-                print("not found email")
-                print("HTTP_404_NOT_FOUND")
-                return Response(status=status.HTTP_404_NOT_FOUND)
-        print("HTTP_400_BAD_REQUEST")
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        try:
+            user = User.objects.get(email=serializer["id"]+"@gsm.hs.kr")
+            print('user')
+            print("----------------------")
+            print(user)
+            print("----------------------")
+            if (user.password == serializer['password']):
+                print("login success")
+                print("HTTP_200_OK")
+                return Response(UserSerializer(user).data,status=status.HTTP_200_OK)
+            else:
+                print("password not same")
+                print("HTTP_202_ACCEPTED")
+                return Response(status=status.HTTP_202_ACCEPTED)
+        except: 
+            print("not found email")
+            print("HTTP_404_NOT_FOUND")
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
 
 def email_auth(request, hash):
     print("////////////////////////////////////")
