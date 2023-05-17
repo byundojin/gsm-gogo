@@ -103,6 +103,7 @@ class Game(models.Model):
                 team_b_user += 1
         self.bet_rate = f'{team_a_bet+team_b_bet},{team_a_bet},{team_b_bet}'
         self.user_rate = f'{team_a_user+team_b_user},{team_a_user},{team_b_user}'
+        self.save()
 
     def calculate_game(self):
         self.calculate_dividend_rate()

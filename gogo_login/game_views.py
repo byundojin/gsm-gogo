@@ -33,3 +33,14 @@ def create(request):
     except:
         return HttpResponse("not well")
         
+def rate(request, gameno):
+    try:
+        print(gameno)
+        game = Game.objects.get(id=gameno)
+        print(game)
+        if game.is_active:
+            game.calculate_dividend_rate()
+            return HttpResponse("well")
+        return HttpResponse("not well")
+    except:
+        return HttpResponse("not find game")
